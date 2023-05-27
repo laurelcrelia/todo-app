@@ -1,8 +1,10 @@
 import React, { useEffect, useState} from "react"
 import { Todo } from "./Todo";
+import { TodoInput } from "./TodoInput";
 
 export const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
+
   const getTodos = async () => {
     try {
       const response = await fetch("http://localhost:3000/todos");
@@ -13,6 +15,7 @@ export const TodoContainer = () => {
       console.error(err.message);
     }
   };
+  
   useEffect(() => {
     getTodos();
   }, []);
@@ -20,13 +23,12 @@ export const TodoContainer = () => {
   return (
     <div className="TodoContainer">
       <h1>Todo App</h1>
-        {todos.map((todo) => (
-          <Todo 
-          key={todo.id}
-          task={todo.description} />
-        ))}
+      <TodoInput/>
+      {todos.map((todo) => (
+        <Todo 
+        key={todo.id}
+        task={todo.description} />
+      ))}
     </div>
   );
 };
-
-export default TodoContainer;
