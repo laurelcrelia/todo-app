@@ -52,7 +52,6 @@ h1 {
   border: none;
   padding: 0.55rem;
   cursor: pointer;
-  
 }
 
 .todo-input {
@@ -64,4 +63,9 @@ h1 {
   margin-bottom: 2rem;
   width: 300px;
   color: #fff;
+}
+
+.trash-icon {
+  margin-left: 0.75rem;
+  cursor: pointer;
 }

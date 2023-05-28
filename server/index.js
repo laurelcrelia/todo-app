@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // get all todos
-app.get("/todos", async (req, res) => {
+app.get("/api/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
     res.json(allTodos.rows);
@@ -19,7 +19,7 @@ app.get("/todos", async (req, res) => {
 });
 
 // create a todo
-app.post("/todos", async (req, res) => {
+app.post("/api/todos", async (req, res) => {
   try {
     const { description } = req.body;
     const newTodo = await pool.query("INSERT INTO todo (description) VALUES($1) RETURNING *",
@@ -31,14 +31,21 @@ app.post("/todos", async (req, res) => {
   }
 });
 
-// get a todo
-// ...
+// delete a todo
+app.delete("/api/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteTodo = await pool.query("DELETE FROM todo WHERE id = $1", [
+      id
+    ]);
+    res.json(`Todo with an id of ${id} was deleted!`);
+  } catch (err) {
+    console.log(err.message);
+  }
+});
 
 // update a todo
 //...
-
-// delete a todo
-// ...
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`)

@@ -1,14 +1,13 @@
 import React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleCheck } from "@fortawesome/free-solid-svg-icons"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
-export const Todo = ({task}) => {
- 
+export const Todo = ({id, task, deleteTodo}) => {
   return (
     <div className="Todo">
         {task}
-        <div>
-        <FontAwesomeIcon icon={faCircleCheck} />
+        <div className="trash-icon">
+        <FontAwesomeIcon icon={faTrash} onClick={() => deleteTodo(id)} />
         </div>
     </div>
   );

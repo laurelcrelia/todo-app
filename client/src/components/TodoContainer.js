@@ -7,10 +7,22 @@ export const TodoContainer = () => {
 
   const getTodos = async () => {
     try {
-      const response = await fetch("http://localhost:3000/todos");
+      const response = await fetch("http://localhost:3000/api/todos");
       const jsonData = await response.json();
 
       setTodos(jsonData);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  const deleteTodo = async id => {
+    try {
+      await fetch(`http://localhost:3000/api/todos/${id}`, {
+        method: "DELETE"
+      });
+
+      setTodos(todos.filter((todo) => todo.id !== id));
     } catch (err) {
       console.error(err.message);
     }
@@ -27,7 +39,10 @@ export const TodoContainer = () => {
       {todos.map((todo) => (
         <Todo 
         key={todo.id}
-        task={todo.description} />
+        id={todo.id}
+        task={todo.description}
+        deleteTodo={deleteTodo}
+        />
       ))}
     </div>
   );
