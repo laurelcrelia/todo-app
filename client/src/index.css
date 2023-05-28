@@ -65,7 +65,11 @@ h1 {
   color: #fff;
 }
 
-.trash-icon {
+.fa-trash {
   margin-left: 0.75rem;
+  cursor: pointer;
+}
+
+.fa-pen-to-square {
   cursor: pointer;
 }

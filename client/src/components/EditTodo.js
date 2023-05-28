@@ -1,26 +1,25 @@
 import React, {useState} from "react"
 
-export const TodoInput = () => {
-  const [description, setDescription] = useState("");
+export const EditTodo = ({todo, editTodo}) => {
+  const [description, setDescription] = useState(todo.description);
 
-  const addTodo = async e => {
+  const submitChanges = async e => {
     e.preventDefault();
     try {
-    const body = { description }; 
-    const response = await fetch("http://localhost:3000/api/todos", {
-        method: "POST",
+    const body = {description}
+    const response = await fetch(`http://localhost:3000/api/todos/${todo.id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
     });
-
     window.location = "/";
     } catch (err) {
     console.error(err.message);
     }
-  };
+};
 
-  return (
-    <form className="TodoInput" onSubmit={addTodo}>
+ return (
+    <form className="TodoInput" onSubmit={submitChanges}>
     <input
       type="text"
       className="todo-input"
@@ -28,7 +27,7 @@ export const TodoInput = () => {
       value={description}
       onChange={e => setDescription(e.target.value)}
     />
-    <button className="todo-btn">Add</button>
+    <button className="todo-btn">Edit</button>
   </form>
   );
 };

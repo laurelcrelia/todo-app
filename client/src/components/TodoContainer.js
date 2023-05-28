@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react"
 import { Todo } from "./Todo";
 import { TodoInput } from "./TodoInput";
+import { EditTodo } from "./EditTodo";
 
 export const TodoContainer = () => {
   const [todos, setTodos] = useState([]);
@@ -27,7 +28,23 @@ export const TodoContainer = () => {
       console.error(err.message);
     }
   };
-  
+
+  const editTodo = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+      )
+    );
+  };
+
+  const editTask = (task, id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo
+      )
+    );
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -36,12 +53,18 @@ export const TodoContainer = () => {
     <div className="TodoContainer">
       <h1>Todo App</h1>
       <TodoInput/>
-      {todos.map((todo) => (
+      {todos.map((todo) => 
+        todo.isEditing ? (
+          <EditTodo
+          key={todo.id} 
+          editTodo={editTask} 
+          todo={todo}/>
+        ) : (
         <Todo 
         key={todo.id}
-        id={todo.id}
-        task={todo.description}
+        todo={todo}
         deleteTodo={deleteTodo}
+        editTodo={editTodo}
         />
       ))}
     </div>
