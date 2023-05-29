@@ -5,7 +5,7 @@ With this app you can create, view, edit and delete todos.
 
 This app was created within the time limit of 12 hours and it was my very first fullstack project.
 
-![preview](https://github.com/laurelcrelia/todo-app/assets/102039234/cdebbdea-5dd8-476a-80a9-bd99d615f485)
+![preview](https://github.com/laurelcrelia/todo-app/assets/102039234/8bd49fa6-52c8-48a6-9107-38e3914cb448)
 
 # User Instructions
 
@@ -14,7 +14,7 @@ Ensure that PostgreSQL and Node.js are installed on your machine.
 ### 1. Create .env file inside server directory. 
 Here is an example:
 
-![.env example](https://github.com/laurelcrelia/todo-app/assets/102039234/204e85ca-5ee9-4463-a067-6ce622d302df)
+![.env.example](https://github.com/laurelcrelia/todo-app/assets/102039234/242f97fc-d2d4-44fc-a122-84b1e50600bc)
 
 ### 2. Install dependencies (server):
 Navigate to the server directory and run the following command.   
