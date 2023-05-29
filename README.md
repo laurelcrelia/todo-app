@@ -9,7 +9,7 @@ This app was created within the time limit of 12 hours and it was my very first 
 
 # User Instructions
 
-Ensure that PostgreSQL and Node.js are installed on your machine.   
+Ensure that [PostgreSQL](https://www.postgresql.org/download/) and [Node.js](https://nodejs.org/en) are installed on your machine.   
 
 ### 1. Create .env file inside server directory. 
 Here is an example:
