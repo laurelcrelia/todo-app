@@ -5,6 +5,8 @@ With this app you can create, view, edit and delete todos.
 
 This app was created within the time limit of 12 hours and it was my very first fullstack project.
 
+![preview](https://github.com/laurelcrelia/todo-app/assets/102039234/cdebbdea-5dd8-476a-80a9-bd99d615f485)
+
 # User Instructions
 
 Ensure that PostgreSQL and Node.js are installed on your machine.   
